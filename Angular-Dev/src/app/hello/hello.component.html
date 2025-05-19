@@ -1,6 +1,8 @@
-<div>
-    <input type="text" [(ngModel)]="inputName"/>
+<div *ngIf="namesList.length < 3">
+
+    <input  type="text" [(ngModel)]="inputName"/>
     <button (click)="addName()">Add Name</button>
+
 </div>
 
-<p (click)="onNameClick()">hello {{name}}!</p>
+<p *ngFor="let item of namesList; index as i" (click)="onNameClick()">{{i}} hello {{item}}!</p>

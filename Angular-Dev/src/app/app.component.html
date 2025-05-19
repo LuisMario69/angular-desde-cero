@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div class="app-container" style="text-align: center;">
 
   <!-- Concepto Style Binding -->
   <h1 [style.font-size.%]="myHelloComponent.namesList.length > 0 ? 200: 150" 
@@ -10,9 +10,7 @@
     Writting '{{ myHelloComponent.inputName }}' in HelloComponent
   </div>
 
-<app-hello #myHelloComponent [name]="myName" (sayHello)="onSayHello($event)"></app-hello>
+<app-hello #myHelloComponent (sayHello)="onSayHello($event)"></app-hello>
 </div>
 
-<app-hello name="Nata"></app-hello>
-<app-hello name="Tito"></app-hello> 
 <router-outlet />
