@@ -1,19 +1,19 @@
-<div class="app-container" style="text-align: center;">
+<div style="text-align: center;">
 
   <!-- Concepto Style Binding -->
-  <h1 [style.font-size.%]="myHelloComponent.namesList.length > 0 ? 200: 150" 
-      [style.color]="myHelloComponent.namesList.length > 0 ? 'red': 'black'">
+  <h1 [ngStyle]="titleStyle">
     Lest Learn Angular
   </h1>
 
   <div [class.hidden]="myHelloComponent.inputName.length == 0">
 
-    // Concepto Class Binding para asociarla a la funcion updateNameClass, como se un Bainding
-    // cada vez que se detecte un cambios se evalua la funcion
+     <!-- ! Concepto Class Binding para asociarla a la funcion updateNameClass, como se un Binding
+     ! cada vez que se detecte un cambios se evalua la funcion -->
     <span [ngClass]="updateNameClass(myHelloComponent.inputName)">Writting '{{ myHelloComponent.inputName }}' in HelloComponent </span>
+  
   </div>
 
-<app-hello #myHelloComponent (sayHello)="onSayHello($event)"></app-hello>
+  <app-hello #myHelloComponent (sayHello)="onSayHello($event)"></app-hello>
 </div>
 
 <router-outlet />
