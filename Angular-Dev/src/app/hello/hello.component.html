@@ -13,8 +13,7 @@
 </div>
 
 <p *ngFor="let item of namesList; index as i" (click)="onNameClick()">
-  <!-- Introduccion de las PIPES -->
-   
+  <!-- Introduccion de las PIPES -->  
   {{i}} hello {{item | upperCapital}}!
 </p>
 

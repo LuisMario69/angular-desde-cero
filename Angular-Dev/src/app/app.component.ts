@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HelloComponent } from "./hello/hello.component";
 import { CommonModule } from '@angular/common';
+import { LoggerService } from './logger.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HelloComponent, CommonModule],
+  providers: [LoggerService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,7 +18,12 @@ export class AppComponent {
   public titleStyle = {};
   public counter = 0;
 
+  constructor (private logger : LoggerService) {
+
+  }
+
   onSayHello(message : any) {
+    this.logger.log(message)
     console.log(message);
     this.counter++;
     this.updateTittleStyle();
