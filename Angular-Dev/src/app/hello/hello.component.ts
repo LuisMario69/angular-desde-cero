@@ -1,11 +1,12 @@
 import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UpperCapitalPipe } from './upper-capital.pipe';
 
 @Component({
   selector: 'app-hello',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, UpperCapitalPipe],
   templateUrl: './hello.component.html',
   styleUrl: './hello.component.css'
 })
