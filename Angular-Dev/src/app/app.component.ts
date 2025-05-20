@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HelloComponent } from "./hello/hello.component";
 import { CommonModule } from '@angular/common';
-import { LoggerService } from './logger.service';
+import { GreetingsService } from './greetings.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  providers: [GreetingsService], 
   imports: [RouterOutlet, HelloComponent, CommonModule],
-  providers: [LoggerService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -16,16 +16,13 @@ import { LoggerService } from './logger.service';
 export class AppComponent {
   public myName: string = 'Dev';
   public titleStyle = {};
-  public counter = 0;
 
-  constructor (private logger : LoggerService) {
-
+  constructor (private greetingsService: GreetingsService) {
   }
 
   onSayHello(message : any) {
-    this.logger.log(message)
+    this.greetingsService.handleGreeting(message);
     console.log(message);
-    this.counter++;
     this.updateTittleStyle();
   }
 
@@ -44,7 +41,7 @@ export class AppComponent {
   updateTittleStyle() {
     this.titleStyle = {
       'margin-top' : '40px',
-      'color': this.counter < 3 ? 'blue' : 'red'
+       'color': this.greetingsService.counter < 3 ? 'blue' : 'red'
     }
   }
 }

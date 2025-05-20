@@ -2,10 +2,12 @@ import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UpperCapitalPipe } from './upper-capital.pipe';
+import { GreetingsService } from '../greetings.service';
 
 @Component({
   selector: 'app-hello',
   standalone: true,
+  providers: [GreetingsService],
   imports: [FormsModule, CommonModule, UpperCapitalPipe],
   templateUrl: './hello.component.html',
   styleUrl: './hello.component.css'
@@ -18,10 +20,12 @@ export class HelloComponent {
   public namesList: Array<string> = [];
   public inputName: string = '';
   
-  constructor() { 
+  constructor(private greetingsService: GreetingsService) {
+    
   };
 
   onNameClick() {
+    console.log("Counter in HelloComponent: ", this.greetingsService.counter);
     this.sayHello.emit('Hello!');
   }
 
