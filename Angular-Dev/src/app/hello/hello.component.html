@@ -1,6 +1,5 @@
 <div [ngSwitch]="namesList.length < 3">
 
-
   <div *ngSwitchDefault="">
       <input  type="text" [(ngModel)]="inputName"/>
       <button (click)="addName()">Add Name</button>
@@ -16,4 +15,3 @@
   <!-- Introduccion de las PIPES -->  
   {{i}} hello {{item | upperCapital}}!
 </p>
-

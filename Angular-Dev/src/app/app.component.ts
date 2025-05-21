@@ -28,14 +28,16 @@ export class AppComponent {
 
   // ! Esta funcion recibe un string y devuelve un objeto con las clases css a modo de clave
   // ! y un booleano como valor
-  updateNameClass(name: string) {
-    return {
-      'error' : name.length <= 3,
-      'warning' : name.length > 3 && name.length <= 6,
-      'success' : name.length > 6,
-      'bold' : name.length > 8
+  updateNameClass(name: string): string {
+    if (!name || name.length === 0) {
+      return '';
+    } else if (name.length < 3) {
+      return 'name-invalid';
+    } else if (name.length > 10) {
+      return 'name-warning';
+    } else {
+      return 'name-valid';
     }
-
   }
 
   updateTittleStyle() {
@@ -44,4 +46,5 @@ export class AppComponent {
        'color': this.greetingsService.counter < 3 ? 'blue' : 'red'
     }
   }
+
 }
